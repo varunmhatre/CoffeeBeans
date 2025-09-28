@@ -22,9 +22,9 @@ namespace CoffeeBeans.UI
             EventBus.OnCoinsChanged -= UpdateCoins;
         }
         
-        void UpdateCoins(int amount)
+        private void UpdateCoins(int amount)
         {
-            if (coinsText != null) coinsText.text = amount.ToString();
+            if (coinsText != null) coinsText.text = "Coins: " + amount.ToString();
         }
     }
 }

@@ -8,16 +8,14 @@ namespace CoffeeBeans.Customers
 {
     public class Customer : MonoBehaviour, IOrderReceiver, IInteractable
     {
-        public int price = 5;
-        
         public bool ReceiveOrder(GameObject item)
         {
             if (item == null) return false;
             if (item.TryGetComponent<CoffeeCup>(out CoffeeCup cup))
             {
-                GameManager.Instance.economyService.AddCoins(price);
+                GameManager.Instance.economyService.AddCoins(cup.price);
                 Destroy(item);
-                EventBus.CustomerServed(1);
+                EventBus.CustomerServed(1, cup.price);
                 return true;
             }
             return false;

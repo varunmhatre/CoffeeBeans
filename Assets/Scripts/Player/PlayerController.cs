@@ -3,18 +3,15 @@ using UnityEngine;
 
 namespace CoffeeBeans.Player
 {
-    [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        public float moveSpeed = 3.5f;
-        CharacterController cc;
+        private float moveSpeed = 0.1f;
         
-        IInteractable currentInteractable;
+        private IInteractable currentInteractable;
         public StackController stackController;
         
         private void Awake()
         {
-            cc = GetComponent<CharacterController>();
             if (stackController == null) stackController = GetComponentInChildren<StackController>();
         }
         
@@ -33,7 +30,7 @@ namespace CoffeeBeans.Player
             float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
             Vector3 dir = new Vector3(h, 0, v).normalized;
-            cc.SimpleMove(dir * moveSpeed);
+            transform.position += dir * moveSpeed;
         }
 
         public void SetCurrentInteractable(IInteractable interactable)

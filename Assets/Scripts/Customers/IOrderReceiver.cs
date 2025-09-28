@@ -4,6 +4,6 @@ namespace CoffeeBeans.Customers
 {
     public interface IOrderReceiver
     {
-        bool ReceiveOrder(GameObject item);
+        public bool ReceiveOrder(GameObject item);
     }
 }

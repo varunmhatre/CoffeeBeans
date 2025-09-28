@@ -5,11 +5,12 @@ namespace CoffeeBeans.Collectibles
 {
     public class CoffeeCup : MonoBehaviour, IDeliveryItem
     {
+        public int price => 5;
         public string Id => "CoffeeCup";
         
         public void OnCollected(PlayerController player)
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
+            Rigidbody rb = GetComponentInChildren<Rigidbody>();
             if (rb) Destroy(rb);
         }
         

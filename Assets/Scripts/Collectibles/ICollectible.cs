@@ -4,7 +4,7 @@ namespace CoffeeBeans.Collectibles
 {
     public interface ICollectible
     {
-        string Id { get; }
-        void OnCollected(PlayerController player);
+        public string Id { get; }
+        public void OnCollected(PlayerController player);
     }
 }
