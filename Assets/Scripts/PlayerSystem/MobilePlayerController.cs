@@ -7,7 +7,7 @@ namespace CoffeeBeans.PlayerSystem
         private Player player;
         private StackController stack;
         private InteractionHandler interactionHandler;
-        private float moveSpeed = 0.05f;
+        private float moveSpeed = 0.1f;
 
         public void Initialize(Player player, StackController stackController, InteractionHandler interactionHandler)
         {
