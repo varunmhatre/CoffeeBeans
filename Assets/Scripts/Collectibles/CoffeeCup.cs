@@ -1,4 +1,4 @@
-using CoffeeBeans.Player;
+using CoffeeBeans.PlayerSystem;
 using UnityEngine;
 
 namespace CoffeeBeans.Collectibles
@@ -8,7 +8,7 @@ namespace CoffeeBeans.Collectibles
         public int price => 5;
         public string Id => "CoffeeCup";
         
-        public void OnCollected(PlayerController player)
+        public void OnCollected(Player player)
         {
             Rigidbody rb = GetComponentInChildren<Rigidbody>();
             if (rb) Destroy(rb);
@@ -16,7 +16,7 @@ namespace CoffeeBeans.Collectibles
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<PlayerController>(out var player))
+            if (other.TryGetComponent<Player>(out var player))
             {
                 StackController stack = player.GetStack();
                 if (stack.CanAdd)

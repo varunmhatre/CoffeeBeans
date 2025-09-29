@@ -1,12 +1,12 @@
 using CoffeeBeans.Core;
-using CoffeeBeans.Player;
+using CoffeeBeans.PlayerSystem;
 using UnityEngine;
 
 namespace CoffeeBeans.Customers
 {
     public class DeliverySystem : MonoBehaviour
     {
-        public void DeliverToCustomer(PlayerController player, Customer customer)
+        public void DeliverToCustomer(Player player, Customer customer)
         {
             StackController stack = player.GetStack();
             GameObject top = stack.PeekTopItem();

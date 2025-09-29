@@ -1,4 +1,4 @@
-using CoffeeBeans.Player;
+using CoffeeBeans.PlayerSystem;
 using UnityEngine;
 
 namespace CoffeeBeans.Interactables
@@ -9,7 +9,7 @@ namespace CoffeeBeans.Interactables
         [Header("Prefabs")]
         public GameObject beanBagPrefab;
         
-        public void Interact(PlayerController player)
+        public void Interact(Player player)
         {
             StackController stack = player.GetStack();
             if (!stack.CanAdd) return;
@@ -19,17 +19,17 @@ namespace CoffeeBeans.Interactables
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<PlayerController>(out PlayerController player))
+            if (other.TryGetComponent<InteractionHandler>(out InteractionHandler handler))
             {
-                player.SetCurrentInteractable(this);
+                handler.SetCurrentInteractable(this);
             }
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (other.TryGetComponent<PlayerController>(out PlayerController player))
+            if (other.TryGetComponent<InteractionHandler>(out InteractionHandler handler))
             {
-                player.SetCurrentInteractable(null);
+                handler.SetCurrentInteractable(null);
             }
         }
     }

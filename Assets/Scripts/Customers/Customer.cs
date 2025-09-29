@@ -1,7 +1,7 @@
 using CoffeeBeans.Collectibles;
 using CoffeeBeans.Core;
 using CoffeeBeans.Interactables;
-using CoffeeBeans.Player;
+using CoffeeBeans.PlayerSystem;
 using UnityEngine;
 
 namespace CoffeeBeans.Customers
@@ -21,7 +21,7 @@ namespace CoffeeBeans.Customers
             return false;
         }
         
-        public void Interact(PlayerController player)
+        public void Interact(Player player)
         {
             StackController stack = player.GetStack();
             GameObject top = stack.PeekTopItem();
@@ -34,17 +34,17 @@ namespace CoffeeBeans.Customers
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<PlayerController>(out PlayerController player))
+            if (other.TryGetComponent<InteractionHandler>(out InteractionHandler handler))
             {
-                player.SetCurrentInteractable(this);
+                handler.SetCurrentInteractable(this);
             }
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (other.TryGetComponent<PlayerController>(out PlayerController player))
+            if (other.TryGetComponent<InteractionHandler>(out InteractionHandler handler))
             {
-                player.SetCurrentInteractable(null);
+                handler.SetCurrentInteractable(null);
             }
         }
     }

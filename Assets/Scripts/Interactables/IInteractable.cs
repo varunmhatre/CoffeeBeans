@@ -1,10 +1,10 @@
 
-using CoffeeBeans.Player;
+using CoffeeBeans.PlayerSystem;
 
 namespace CoffeeBeans.Interactables
 {
     public interface IInteractable
     {
-        void Interact(PlayerController player);
+        void Interact(Player player);
     }
 }

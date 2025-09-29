@@ -1,6 +1,6 @@
 using CoffeeBeans.Collectibles;
 using CoffeeBeans.MachineProcessors;
-using CoffeeBeans.Player;
+using CoffeeBeans.PlayerSystem;
 using UnityEngine;
 
 namespace CoffeeBeans.Interactables
@@ -17,7 +17,7 @@ namespace CoffeeBeans.Interactables
             if (processor == null) processor = new CoffeeProcessor(processingTime, coffeePrefab, outputPoint);
         }
         
-        public void Interact(PlayerController player)
+        public void Interact(Player player)
         {
             StackController stack = player.GetStack();
             GameObject top = stack.PeekTopItem();
@@ -33,17 +33,17 @@ namespace CoffeeBeans.Interactables
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<PlayerController>(out PlayerController player))
+            if (other.TryGetComponent<InteractionHandler>(out InteractionHandler handler))
             {
-                player.SetCurrentInteractable(this);
+                handler.SetCurrentInteractable(this);
             }
         }
         
         private void OnTriggerExit(Collider other)
         {
-            if (other.TryGetComponent<PlayerController>(out PlayerController player))
+            if (other.TryGetComponent<InteractionHandler>(out InteractionHandler handler))
             {
-                player.SetCurrentInteractable(null);
+                handler.SetCurrentInteractable(null);
             }
         }
     }

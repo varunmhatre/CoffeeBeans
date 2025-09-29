@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using CoffeeBeans.Collectibles;
 using UnityEngine;
 
-namespace CoffeeBeans.Player
+namespace CoffeeBeans.PlayerSystem
 {
     public class StackController : MonoBehaviour
     {
@@ -24,7 +24,7 @@ namespace CoffeeBeans.Player
             item.transform.localPosition = stackOffset * items.Count;
             if (item.TryGetComponent<ICollectible>(out ICollectible collectible))
             {
-                collectible.OnCollected(GetComponentInParent<PlayerController>());
+                collectible.OnCollected(GetComponentInParent<Player>());
             }
             return true;
         }

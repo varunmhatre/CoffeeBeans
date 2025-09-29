@@ -1,4 +1,4 @@
-using CoffeeBeans.Player;
+using CoffeeBeans.PlayerSystem;
 using UnityEngine;
 
 namespace CoffeeBeans.Collectibles
@@ -7,7 +7,7 @@ namespace CoffeeBeans.Collectibles
     {
         public string Id => "BeanBag";
         
-        public void OnCollected(PlayerController player)
+        public void OnCollected(Player player)
         {
             Rigidbody rb = GetComponent<Rigidbody>();
             if (rb) Destroy(rb);

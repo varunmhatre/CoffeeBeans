@@ -1,10 +1,10 @@
-using CoffeeBeans.Player;
+using CoffeeBeans.PlayerSystem;
 
 namespace CoffeeBeans.Collectibles
 {
     public interface ICollectible
     {
         public string Id { get; }
-        public void OnCollected(PlayerController player);
+        public void OnCollected(Player player);
     }
 }
